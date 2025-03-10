@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHUBHAM HOSPITALS</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">SHUBHAM HOSPITALS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLink="/Admin">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <!-- <li class="nav-item active">
+                  <a class="nav-link" href="#" routerLink="/Admin">Admin</a>
+                </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/appointmentlist">Appointments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Doctors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Patients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<div class="container">
+  <h2>Medicine Management</h2>
+  <div>
+    <label>Drug Name:</label>
+    <input [(ngModel)]="newMedicine.drugname" required />
+  </div>
+
+  <!-- Form for Adding/Updating Medicine -->
+  <!-- <form (submit)="isEditing ? updateMedicine() : addMedicine()"> -->
+  <!-- <form>
+    <!-- <div>
+      <label>Drug Name:</label>
+      <input [(ngModel)]="newMedicine.drugname" required />
+    </div>
+    <div>
+      <label>Manufacturer:</label>
+      <input [(ngModel)]="newMedicine.manufacturer" required />
+    </div>
+    <div>
+      <label>Expiry Date:</label>
+      <input [(ngModel)]="newMedicine.expiryDate" type="date" required />
+    </div>
+    <div>
+      <label>Price:</label>
+      <input [(ngModel)]="newMedicine.price" type="number" required />
+    </div> -->
+  <!-- <div>
+      <label>Stock:</label>
+      <input [(ngModel)]="newMedicine.stock" type="number" required />
+    </div> -->
+  <!-- <button type="submit">{{ isEditing ? 'Update' : 'Add' }} Medicine</button> -->
+  <!-- </form> -->
+
+  <!-- Table to Display Medicines -->
+  <table class="table table-stripad">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Drug Name</th>
+        <!-- <th>Manufacturer</th>
+        //<th>Expiry Date</th>
+        //<th>Price</th> -->
+        <th>Stock</th>
+        <!-- //<th>Actions</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medicine of medicines">
+        <td>{{ medicine.id }}</td>
+        <td>{{ medicine.drugname }}</td>
+        <!-- <td>{{ medicine.manufacturer }}</td>
+        <td>{{ medicine.expiryDate }}</td>
+        <td>{{ medicine.price }}</td> -->
+        <td>{{ medicine.stock }}</td>
+        <!-- <td>
+                  <button (click)="editMedicine(medicine.id)">Edit</button>
+                  <button (click)="deleteMedicine(medicine.id)">Delete</button>
+                </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
