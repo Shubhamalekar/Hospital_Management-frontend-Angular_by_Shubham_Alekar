@@ -1,68 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Manage Appointments</h2>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHUBHAM HOSPITALS</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">SHUBHAM HOSPITALS</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/appointmentlist">Appointments</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Doctors</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Patients</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
+  <!-- Create/Update Form -->
+  <form (submit)="isEditing ? updateAppointment() : appointments" class="mb-3">
+    <div class="form-group mb-3">
+      <label for="patientName">Name:</label>
+      <input id="patientName" class="form-control" type="text" [(ngModel)]="newAppointment.name" name="patientName"
+        required />
     </div>
-  </nav>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <div class="form-group mb-3">
+      <label for="doctorName">Age:</label>
+      <input id="doctorName" class="form-control" type="text" [(ngModel)]="newAppointment.age" name="doctorName"
+        required />
+    </div>
 
-</html>
-<table class="table table-stripad">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Age</th>
-      <th>symptoms</th>
-      <th>number</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let appointment of appointments">
-      <td>{{ appointment.id }}</td>
-      <td>{{ appointment.name }}</td>
-      <td>{{ appointment.age }}</td>
-      <td>{{ appointment.symptoms }}</td>
-      <td>{{ appointment.number }}</td>
+    <div class="form-group mb-3">
+      <label for="symptoms">Symptoms:</label>
+      <input id="symptoms" class="form-control" type="text" [(ngModel)]="newAppointment.symptoms" name="symptoms"
+        required />
+    </div>
 
-    </tr>
-  </tbody>
-</table>
+    <div class="form-group mb-3">
+      <label for="contactNumber">Number:</label>
+      <input id="contactNumber" class="form-control" type="tel" [(ngModel)]="newAppointment.number" name="contactNumber"
+        required />
+    </div>
+
+    <button class="btn btn-primary w-100" type="submit">
+      {{ isEditing ? 'Update Appointment' : 'Add Appointment' }}
+    </button>
+  </form>
+  <!-- Appointment Table -->
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>symptoms</th>
+        <th>number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of appointments">
+        <td>{{ appointment.id }}</td>
+        <td>{{ appointment.name }}</td>
+        <td>{{ appointment.age }}</td>
+        <td>{{ appointment.symptoms }}</td>
+        <td>{{ appointment.number }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="startEditingAppointment(appointment.id)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteAppointment(appointment.id)">Delete</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>

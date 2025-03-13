@@ -1,0 +1,17 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  border-radius: 10px;
+  background-color: #f8f9fa;
+}
+
+h2 {
+  color: #007bff;
+}
+
+button {
+  font-weight: bold;
+}

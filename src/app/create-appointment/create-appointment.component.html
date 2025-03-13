@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Create Appointment</h2>
+  <div class="card shadow-lg p-4">
+    <form (submit)="createAppointment()">
+      <div class="form-group mb-3">
+        <label for="patientName">Name:</label>
+        <input id="patientName" class="form-control" type="text" [(ngModel)]="newAppointment.name" name="patientName"
+          required />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="doctorName">Age:</label>
+        <input id="doctorName" class="form-control" type="text" [(ngModel)]="newAppointment.age" name="doctorName"
+          required />
+      </div>
+
+
+      <div class="form-group mb-3">
+        <label for="symptoms">Symptoms:</label>
+        <textarea id="symptoms" class="form-control" rows="3" [(ngModel)]="newAppointment.symptoms" name="symptoms"
+          required></textarea>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="contactNumber">Number:</label>
+        <input id="contactNumber" class="form-control" type="tel" [(ngModel)]="newAppointment.number"
+          name="contactNumber" required />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Create Appointment</button>
+    </form>
+  </div>
+</div>
